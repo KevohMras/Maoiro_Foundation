@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+<!----payment section-->
+    <div class="payment" style="background-color: #0c0c0c; color: white;">
+    <h1 class="text-center">Make a Payment</h1>
+     <form action="{% url 'Focy:stk' %}" method="post" style="margin-left: 20px">
+    {% csrf_token %}
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="tel" class="form-control" value="254" name="phone" placeholder="Phone Number" required="required" style="width: 50%">
+    <br><br>
+    <label for="amount" class="form-label">Amount</label>
+    <input type="number" name="amount" placeholder="Amount" required="required" class="form-control" style="width: 50%">
+    <br><br>
+
+   <button type="submit" style="background-color: darkorange; width: 30%" class="mb-2" >PAY</button>
+         <br>
+    </form>
+    </div>
+
+{% endblock %}

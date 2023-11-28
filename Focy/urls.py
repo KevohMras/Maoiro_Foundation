@@ -11,5 +11,5 @@ urlpatterns = [
     path('testimonial/', views.testimonial, name='testimonial'),
     path('pay/', views.pay, name='pay'),
     path('token/', views.token, name='token'),
-    path('stk/', views.stk, name='stk')
+    path('stk/', views.stk, name='stk'),
 ]

@@ -1,5 +1,8 @@
 import json
 
+from .models import MyModel
+from .forms import MyForm
+
 import requests
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -73,3 +76,14 @@ def stk(request):
 
 def pay(request):
     return render(request, 'pay.html')
+
+
+
+def my_form(request):
+  if request.method == "POST":
+    form = MyForm(request.POST)
+    if form.is_valid():
+      form.save()
+  else:
+      form = MyForm()
+  return render(request, 'contact.html', {'form': form})
