@@ -1,7 +1,10 @@
-import json
+from django.shortcuts import redirect
 
-from .models import MyModel
-from .forms import MyForm
+from django.contrib.auth.views import LoginView
+from django.contrib import messages
+from django.views import View
+
+import json
 
 import requests
 from django.http import HttpResponse
@@ -18,11 +21,6 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
-
-
-def contact(request):
-    return render(request, 'contact.html')
-
 
 def project(request):
     return render(request, 'project.html')
@@ -77,13 +75,7 @@ def stk(request):
 def pay(request):
     return render(request, 'pay.html')
 
-
-
-def my_form(request):
-  if request.method == "POST":
-    form = MyForm(request.POST)
-    if form.is_valid():
-      form.save()
-  else:
-      form = MyForm()
-  return render(request, 'contact.html', {'form': form})
+# listings/views.py
+def contact(request):
+  form = contact()# instantiate a new form here
+  return render(request, 'contact.html', {'form': form}) # pass that form to the template

@@ -13,9 +13,9 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-    <link rel="icon" type="image/x-icon" href="/images/Mfoundationlogo.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Mfoundationlogo.ico' %}">
 
-  <title>MAOIRO_YOUTH_GROUP</title>
+  <title>MAOIRO_FOUNDATION</title>
 
 
   <!-- bootstrap core css -->
@@ -50,9 +50,7 @@
               <img src="{% static 'images/flag-uk.png' %}" alt="flag" class=" " title="United Kingdom"> <i class="fa fa-angle-down " aria-hidden="true"></i>
             </a>
             <div class="dropdown-menu ">
-              <a href="#" class="dropdown-item">
-                <img src="{% static 'images/flag-france.png' %}" class="" alt="flag">
-              </a>
+
             </div>
             <span>
               English
@@ -115,11 +113,6 @@
                 <li class="nav-item {% if navbar == 'testimonial' %} active {% endif %}"><a class="nav-link" href="{% url 'Focy:testimonial' %}">Testimonial</a></li>
                 <li class="nav-item {% if navbar == 'contact' %} active {% endif %}"><a class="nav-link" href="{% url 'Focy:contact' %}">Contact</a></li>
 
-                <form class="form-inline">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
               </ul>
               <div class="quote_btn-container">
                 <a href="{% url 'Focy:pay' %}" class="quote_btn">
@@ -343,7 +336,9 @@
               <h4>
                 SIGN UP TO OUR NEWSLETTER
               </h4>
-              <form action="">
+              <form action="" method="post" novalidate>
+              {% csrf_token %}
+                {{ form }}
                 <input type="text" placeholder="Enter Your Email" />
                 <button type="submit">
                   Subscribe

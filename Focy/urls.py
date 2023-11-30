@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth
+from django.contrib import admin
+from django.conf.urls import url
 
 app_name = "Focy"
 urlpatterns = [
