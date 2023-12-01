@@ -35,9 +35,9 @@ def testimonial(request):
 
 
 def token(request):
-    consumer_key = 'nnuypckGY97scmh2TZPqrgtBit5d17KU'
-    consumer_secret = 'HtbS2lE3mrMieXiM'
-    api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    consumer_key = 'XfqjStoWrjhH8AUMZTXxVqOObFMrNipi'
+    consumer_secret = 'D3ALE10cslqMoob9'
+    api_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
 
     r = requests.get(api_URL, auth=HTTPBasicAuth(
         consumer_key, consumer_secret))
@@ -65,11 +65,12 @@ def stk(request):
             "PartyB": LipanaMpesaPpassword.Business_short_code,
             "PhoneNumber": phone,
             "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-            "AccountReference": "Acer Enterprises",
+            "AccountReference": "Apen Softwares",
             "TransactionDesc": "Web Development Charges"
         }
-        response = requests.post(api_url, json=request, headers=headers)
-        return HttpResponse("Message sent successful")
+
+    response = requests.post(api_url, json=request, headers=headers)
+    return HttpResponse("success")
 
 
 def pay(request):
@@ -77,5 +78,18 @@ def pay(request):
 
 # listings/views.py
 def contact(request):
-  form = contact()# instantiate a new form here
-  return render(request, 'contact.html', {'form': form}) # pass that form to the template
+    if request.method == 'POST':
+        contacts = Contact(contactname=request.POST['contactname'], phone_number=request.POST['phone_number'],email=request.POST['email'],
+                            message=request.POST['message'])
+        contacts.save()
+        return redirect('/contact')
+    else:
+        return render(request, 'contact.html')
+
+def subscribe(request):
+    if request.method == 'POST':
+        Subscriber = SubscriptionForm(subscribeemail=request.POST['email'], )
+        Subscriber.save()
+        return redirect('/contact')
+    else:
+        return render(request, 'contact.html')

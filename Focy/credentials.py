@@ -1,4 +1,3 @@
-# github.com/gloryakinyi
 import requests
 import json
 from requests.auth import HTTPBasicAuth
@@ -7,8 +6,8 @@ import base64
 
 
 class MpesaC2bCredential:
-    consumer_key = 'nnuypckGY97scmh2TZPqrgtBit5d17KU'
-    consumer_secret = 'HtbS2lE3mrMieXiM'
+    consumer_key = '77bgGpmlOxlgJu6oEXhEgUgnu0j2WYxA'
+    consumer_secret = 'viM8ejHgtEmtPTHd'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
 

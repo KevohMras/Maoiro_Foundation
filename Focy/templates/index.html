@@ -428,7 +428,7 @@
           <div class="form_container">
             <form action="" method="post" novalidate>
               {% csrf_token %}
-                {{ form }}
+                {{ form.as_p }}
               <div>
                 <input type="text" placeholder="Your Name" />
               </div>
